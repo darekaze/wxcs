@@ -1,7 +1,4 @@
-from flask import Flask
-app = Flask(__name__)
+"""Create an application instance."""
+from wxcs import app
 
-
-@app.route("/")
-def hello_world():
-  return "Hello, World!"
+# main_app = create_app()
