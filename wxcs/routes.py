@@ -1,16 +1,9 @@
 """File handling routes."""
 from flask import flash, redirect, render_template, url_for
 
-from wxcs import app, db
+from wxcs import app
 from wxcs.forms import StarterForm
-
-
-class User(db.Model):
-    """The user model."""
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20), nullable=False)
-    post = db.Column(db.String(20), nullable=False)
+from wxcs.models import UserLog
 
 
 @app.route('/', methods=['GET', 'POST'])
