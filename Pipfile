@@ -6,6 +6,7 @@ verify_ssl = true
 [packages]
 flask = "~=1.0.2"
 environs = "~=4.1.0"
+flask-wtf = "~=0.14.2"
 
 [dev-packages]
 pylint = "~=2.3.1"
