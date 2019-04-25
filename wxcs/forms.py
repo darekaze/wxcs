@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, SubmitField
 from wtforms.validators import DataRequired, InputRequired, Length
 
-class RegistrationForm(FlaskForm):
+class StarterForm(FlaskForm):
   name = StringField(u'Name',
     validators=[DataRequired(), Length(min=2, max=30)])
   post = StringField(u'Post',

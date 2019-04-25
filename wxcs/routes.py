@@ -1,24 +1,23 @@
 from flask import render_template, url_for, flash, redirect
 from wxcs import app
-from wxcs.forms import RegistrationForm
-
-app.config['SECRET_KEY'] = 'lalalalala' # HACK: temp
+from wxcs.forms import StarterForm
 
 """
-Render register page on start, and prevent register and redirect
-user to progress while simulation begins
+Render starter page on start, and prevent starter again after simulation begins
+redirect user to progress
 """
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/start", methods=['GET', 'POST'])
-def register():
-  form = RegistrationForm()
+def starter():
+  form = StarterForm()
   form.cases.choices = [(1, 'Choose...')]
   # TODO: fetch weather case selections from database
 
   if form.validate_on_submit():
-    flash(f'Drill Start!! {form.name.data}', 'success')
+    # TODO: insert record to userlog table
+    flash(f'Drill initialized!! {form.name.data}', 'success')
     return redirect(url_for('temp'))
-  return render_template('start.jinja', form=form)
+  return render_template('starter.jinja', form=form)
 
 @app.route("/temp")
 def temp():
