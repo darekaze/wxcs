@@ -50,3 +50,4 @@ env/
 
 # Development database
 *.db
+*.sqlite
