@@ -1,7 +1,7 @@
 """File Handling forms."""
 
 from flask_wtf import FlaskForm
-from wtforms import SelectField, StringField, PasswordField, SubmitField
+from wtforms import PasswordField, SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired, InputRequired, Length
 
 

@@ -1,9 +1,9 @@
 """File handling routes."""
 from flask import flash, redirect, render_template, url_for
-
-from wxcs import app
-from wxcs.forms import LoginForm, StarterForm
-from wxcs.models import Admin, UserLog
+from flask_login import login_user, logout_user
+from . import app
+from .forms import LoginForm, StarterForm
+from .models import Admin, UserLog
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -31,6 +31,7 @@ def temp():
     return render_template('temp.jinja')
 
 
+# ADMIN ROUTES
 @app.route('/admin')
 @app.route('/admin/dashboard')
 def admin_dashboard():
@@ -43,9 +44,17 @@ def admin_login():
     """Render admin login page."""
     form = LoginForm()
     if form.validate_on_submit():
-        if form.username.data == 'r2admin' and form.password.data == 'password':
-            flash('Welcome!', 'success')
+        admin = Admin.query.filter_by(username=form.username.data).first()
+        if admin and admin.check_password(form.password.data):
+            login_user(admin)
             return redirect(url_for('admin_dashboard'))
         else:
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('admin/login.jinja', title='Login', form=form)
+
+
+@app.route('/admin/logout')
+def logout():
+    """Admin logout."""
+    logout_user()
+    return redirect(url_for(starter))
