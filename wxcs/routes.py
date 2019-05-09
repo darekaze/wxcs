@@ -2,8 +2,8 @@
 from flask import flash, redirect, render_template, url_for
 
 from wxcs import app
-from wxcs.forms import StarterForm
-from wxcs.models import UserLog
+from wxcs.forms import LoginForm, StarterForm
+from wxcs.models import Admin, UserLog
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -29,3 +29,23 @@ def starter():
 def temp():
     """Temp route."""
     return render_template('temp.jinja')
+
+
+@app.route('/admin')
+@app.route('/admin/dashboard')
+def admin_dashboard():
+    """Dashboard route."""
+    return render_template('admin/dashboard.jinja')
+
+
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+    """Render admin login page."""
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.username.data == 'r2admin' and form.password.data == 'password':
+            flash('Welcome!', 'success')
+            return redirect(url_for('admin_dashboard'))
+        else:
+            flash('Login Unsuccessful. Please check username and password', 'danger')
+    return render_template('admin/login.jinja', title='Login', form=form)

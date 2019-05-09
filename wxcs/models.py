@@ -17,3 +17,15 @@ class UserLog(db.Model):
     def __repr__(self):
         """Print userlog detail."""
         return f'UserLog("{self.dtg}", "{self.name}", "{self.post}", "{self.wxid}", "{self.role}")'
+
+
+class Admin(db.Model):
+    """The admin model."""
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    password = db.Column(db.String(60), nullable=False)
+
+    def __repr__(self):
+        """Return admin detail."""
+        return f"Admin('{self.username}')"
