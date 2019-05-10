@@ -48,6 +48,15 @@ env/
 # npm
 /node_modules/
 
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
 # Development database
 *.db
 *.sqlite
