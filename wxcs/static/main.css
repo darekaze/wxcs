@@ -31,12 +31,12 @@ h6 {
 
 .content-section {
   background: #ffffff;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border: 1px solid #dddddd;
   border-radius: 4px;
   margin: 0 auto;
   margin-bottom: 20px;
-  max-width: 700px;
+  max-width: 640px;
 }
 
 .article-title {

@@ -13,15 +13,13 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'lalalalala'  # HACK: temp
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///zetadb.sqlite'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///zetadb.sqlite'  # change to absolute
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
-
-# Run only once when db init
-# ---
-# import wxcs.models
-# db.create_all()
+login_manager.login_view = 'admin_login'
+login_manager.login_message_category = 'info'
 
 from . import routes
