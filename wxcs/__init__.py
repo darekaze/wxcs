@@ -19,4 +19,9 @@ migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
+# Run only once when db init
+# ---
+# import wxcs.models
+# db.create_all()
+
 from . import routes
