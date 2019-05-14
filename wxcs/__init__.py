@@ -1,25 +1,31 @@
-"""Initial wxcs."""
-
+"""The wxcs package containing configs and extecsions."""
 from flask import Flask
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
 
-
-# def create_app():
-#     app = Flask(__name__)
-#     return app
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'lalalalala'  # HACK: temp
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///zetadb.sqlite'  # change to absolute
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-bcrypt = Bcrypt(app)
-login_manager = LoginManager(app)
-login_manager.login_view = 'admin_login'
+db = SQLAlchemy()
+bcrypt = Bcrypt()
+migrate = Migrate()
+login_manager = LoginManager()
+login_manager.login_view = 'admin.login'
 login_manager.login_message_category = 'info'
 
-from . import routes
+
+def create_app(configs='wxcs.config'):
+    """Init app."""
+    app = Flask(__name__)
+    app.config.from_object(configs)
+
+    db.init_app(app)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+    migrate.init_app(app, db)
+
+    from wxcs.core.routes import core
+    from wxcs.admin.routes import admin
+    app.register_blueprint(core)
+    app.register_blueprint(admin)
+
+    return app

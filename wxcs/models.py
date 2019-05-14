@@ -1,7 +1,7 @@
 """Model handling file."""
 from datetime import datetime
 from flask_login import UserMixin
-from . import bcrypt, db, login_manager
+from wxcs import bcrypt, db, login_manager
 
 
 @login_manager.user_loader

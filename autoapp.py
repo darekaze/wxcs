@@ -1,4 +1,4 @@
 """Create an application instance."""
-from wxcs import app
+from wxcs import create_app
 
-# main_app = create_app()
+app = create_app()

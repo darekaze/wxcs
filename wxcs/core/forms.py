@@ -1,7 +1,6 @@
-"""File Handling forms."""
-
+"""File Handling forms in core module."""
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, SelectField, StringField, SubmitField
+from wtforms import SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired, InputRequired, Length
 
 
@@ -17,13 +16,3 @@ class StarterForm(FlaskForm):
         'Role', coerce=int, validators=[InputRequired()],
         choices=[(0, 'Forecaster'), (1, 'TC Consultant'), (2, 'Assistant Forecaster')])
     submit = SubmitField('Start')
-
-
-class LoginForm(FlaskForm):
-    """Return the login form (for admin)."""
-
-    username = StringField(
-        'Username', validators=[DataRequired(), Length(min=2, max=20)])
-    password = PasswordField(
-        'Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
