@@ -4,18 +4,18 @@ from flask_login import current_user, login_required, login_user, logout_user
 from wxcs.models import Admin
 from wxcs.admin.forms import LoginForm
 
-admin = Blueprint('admin', __name__)
+admin = Blueprint('admin', __name__, url_prefix='/admin')
 
 # ADMIN ROUTES
-@admin.route('/admin')
-@admin.route('/admin/dashboard')
+@admin.route('/')
+@admin.route('/dashboard')
 @login_required
 def dashboard():
     """Dashboard route."""
     return render_template('admin/dashboard.jinja')
 
 
-@admin.route('/admin/login', methods=['GET', 'POST'])
+@admin.route('/login', methods=['GET', 'POST'])
 def login():
     """Render admin login page."""
     if current_user.is_authenticated:
@@ -32,7 +32,7 @@ def login():
     return render_template('admin/login.jinja', title='Login', form=form)
 
 
-@admin.route('/admin/logout')
+@admin.route('/logout')
 @login_required
 def logout():
     """Admin logout."""
