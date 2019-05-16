@@ -19,11 +19,11 @@ def starter():
     if form.validate_on_submit():
         # TODO: insert record to userlog table
         flash(f'Drill initialized!! {form.name.data}', 'success')
-        return redirect(url_for('core.temp'))
-    return render_template('starter.jinja', form=form)
+        return redirect(url_for('core.drill'))
+    return render_template('sim/starter.jinja', form=form)
 
 
-@core.route('/temp')
-def temp():
+@core.route('/drill')
+def drill():
     """Temp route."""
-    return render_template('temp.jinja')
+    return render_template('sim/drill.jinja')

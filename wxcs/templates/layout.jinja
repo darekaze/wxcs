@@ -4,32 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% block page_title %}
+    Weather Case Simulator
+    {% endblock %}
+  </title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
-  <title>Weather Case Simulator</title>
+  {% block css %}{% endblock %}
 </head>
 <body>
-  <header class="site-header">
-    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-      <div class="container">
-        <span class="navbar-brand mr-4">WxSim</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarToggle">
-          <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" href="{{ url_for('core.starter') }}">Home</a>
-            <a class="nav-item nav-link" href="{{ url_for('admin.dashboard') }}">Dashboard</a>
-          </div>
-          <div class="navbar-nav">
-            {% if current_user.is_authenticated %}
-              <a class="nav-item nav-link" href="{{ url_for('admin.logout') }}">Logout</a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
+  {% include "header.jinja" %}
   <main role="main" class="container">
     {% with messages=get_flashed_messages(with_categories=true) %}
       {% if messages %}
@@ -46,8 +30,11 @@
     {% block content %}{% endblock %}
   </main>
 
-  <!-- BootstrapJS -->
+  <!-- JS -->
   <script src="{{ url_for('static', filename='bootstrap/jquery-3.4.0.slim.min.js') }}" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
+  {{ moment.include_moment(local_js=url_for('static', filename='moment/moment.min.js')) }}
+
+  {% block js %}{% endblock %}
 </body>
 </html>
