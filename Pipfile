@@ -12,6 +12,7 @@ flask-wtf = "~=0.14.2"
 flask-bcrypt = "~=0.7.1"
 flask-login = "~=0.4.1"
 flask-migrate = "~=2.4.0"
+flask-moment = "~=0.7.0"
 
 [dev-packages]
 # Lint and code style
