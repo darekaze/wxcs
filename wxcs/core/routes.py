@@ -1,7 +1,7 @@
 """File handling core routes."""
-from flask import Blueprint, flash, redirect, render_template, url_for
+from flask import Blueprint, flash, redirect, render_template, url_for, session
 from wxcs.core.forms import StarterForm
-from wxcs.core.utils import load_cases, get_cases_list
+from wxcs.core.utils import load_cases, get_cases_list, add_userlog
 
 core = Blueprint('core', __name__)
 
@@ -13,23 +13,38 @@ def starter():
     Prevent starter again after simulation begins
     redirect user to progress
     """
+    if 'userlog' in session:
+        return redirect(url_for('core.drill'))
+
     cases = load_cases()
     case_menu = get_cases_list(cases)
 
     form = StarterForm()
-    form.cases.choices = [(0, 'Please Select...')] + case_menu
+    form.wxid.choices = [(0, 'Please Select...')] + case_menu
 
     if form.validate_on_submit():
-        if form.cases.data:
-            # TODO: insert record to userlog table
-            flash(f'Hi {form.name.data}! Welcome to ...', 'success')
-            return redirect(url_for('core.drill'))
-        else:
-            flash('Please select a weather case to continue...', 'warning')
+        userlog = {field.name: field.data for field in form}
+        add_userlog(userlog)
+        session['userlog'] = userlog
+        flash(f'Hi {form.name.data}! Welcome to the drill...', 'success')
+        return redirect(url_for('core.drill'))
+
     return render_template('sim/starter.jinja', form=form)
 
 
 @core.route('/drill')
 def drill():
     """Route for handling drill case."""
+    if 'userlog' not in session:
+        return redirect(url_for('core.starter'))
+
+    print(session['userlog'])
+    # If ok, activate status and change the time
     return render_template('sim/drill.jinja')
+
+
+@core.route('/ends')
+def ender():
+    """Display after the drill has ended."""
+    session.pop('userlog', None)
+    return render_template('sim/ender.jinja')

@@ -1,5 +1,6 @@
 {% extends "layout.jinja" %}
 {% block content %}
   <h1>Drill page..</h1>
-  <p class="drill-clock">The current date and time is: {{ moment().format('MMMM Do YYYY, h:mm:ss a') }}.</p>
+  <p>The current date and time is -- <span class="drill-clock"></span></p>
+  <a href="{{ url_for('core.ender') }}" class="btn btn-danger btn-lg">Terminate</a>
 {% endblock content %}

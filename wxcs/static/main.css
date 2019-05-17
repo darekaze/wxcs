@@ -88,4 +88,8 @@ a.article-title:hover {
 
 .drill-clock {
   font-size: 1.09rem;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }

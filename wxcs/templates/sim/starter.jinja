@@ -35,9 +35,17 @@
       </div>
       <div class="form-row">
         <div class="form-group col-md-8">
-          {{ form.cases.label(class="form-control-label") }}
-          {# TODO: Add validation #}
-          {{ form.cases(class="form-control") }}
+          {{ form.wxid.label(class="form-control-label") }}
+          {% if form.wxid.errors %}
+            {{ form.wxid(class="form-control is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.wxid.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+          {% else %}
+            {{ form.wxid(class="form-control") }}
+          {% endif %}
         </div>
         <div class="form-group col-md-4">
           {{ form.role.label(class="form-control-label") }}

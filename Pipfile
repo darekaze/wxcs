@@ -13,6 +13,7 @@ flask-bcrypt = "~=0.7.1"
 flask-login = "~=0.4.1"
 flask-migrate = "~=2.4.0"
 flask-moment = "~=0.7.0"
+pywin32 = ">=224"
 
 [dev-packages]
 # Lint and code style

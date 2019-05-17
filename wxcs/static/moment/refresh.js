@@ -1,13 +1,5 @@
-var datetime = null,
-    date = null;
+function update() {
+  $('.drill-clock').html(moment().format('MMMM DD, YYYY // HH:mm:ss'));
+}
 
-var update = function () {
-    date = moment(new Date())
-    datetime.html(date.format('MMMM DD, YYYY // HH:mm:ss'));
-};
-
-$(document).ready(function(){
-    datetime = $('.drill-clock')
-    update();
-    setInterval(update, 1000);
-});
+setInterval(update, 1000);
