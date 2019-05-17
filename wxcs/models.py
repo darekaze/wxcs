@@ -23,7 +23,7 @@ class UserLog(db.Model):
     role = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        """Print userlog detail."""
+        """Display userlog detail."""
         return f'UserLog("{self.dtg}", "{self.name}", "{self.post}", "{self.wxid}", "{self.role}")'
 
 

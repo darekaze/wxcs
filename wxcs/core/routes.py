@@ -39,7 +39,7 @@ def drill():
         return redirect(url_for('core.starter'))
 
     print(session['userlog'])
-    # If ok, activate status and change the time
+    # TODO: If ok, change the time and activate session['drilling'] = True
     return render_template('sim/drill.jinja')
 
 
@@ -47,4 +47,5 @@ def drill():
 def ender():
     """Display after the drill has ended."""
     session.pop('userlog', None)
+    # TODO: Remove drilling status
     return render_template('sim/ender.jinja')
