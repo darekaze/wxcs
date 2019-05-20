@@ -1,7 +1,7 @@
 """File handling core routes."""
 from flask import Blueprint, flash, redirect, render_template, url_for, session
 from wxcs.core.forms import StarterForm
-from wxcs.core.utils import load_cases, get_cases_list, add_userlog
+from wxcs.core.utils import load_cases, get_cases_list, set_userlog, init_drill
 
 core = Blueprint('core', __name__)
 
@@ -24,8 +24,7 @@ def starter():
 
     if form.validate_on_submit():
         userlog = {field.name: field.data for field in form}
-        add_userlog(userlog)
-        session['userlog'] = userlog
+        set_userlog(userlog)
         flash(f'Hi {form.name.data}! Welcome to the drill...', 'success')
         return redirect(url_for('core.drill'))
 
@@ -38,8 +37,8 @@ def drill():
     if 'userlog' not in session:
         return redirect(url_for('core.starter'))
 
-    print(session['userlog'])
-    # TODO: If ok, change the time and activate session['drilling'] = True
+    if 'drill' not in session:
+        init_drill()
     return render_template('sim/drill.jinja')
 
 
@@ -47,5 +46,5 @@ def drill():
 def ender():
     """Display after the drill has ended."""
     session.pop('userlog', None)
-    # TODO: Remove drilling status
+    session.pop('drill', None)
     return render_template('sim/ender.jinja')
