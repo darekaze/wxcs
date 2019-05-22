@@ -60,6 +60,7 @@ def init_drill(wxid):
     """Initialize drill: change time and set drill session."""
     cases = load_cases()
     selected_case = get_case_details(cases, wxid)
+    # ENHANCE: Sync mini station Time (Kwong)
 
     if set_time(selected_case['start_at']):
         session['drill'] = True
@@ -67,7 +68,7 @@ def init_drill(wxid):
     else:
         session['drill'] = False
         flash(f'The time has not setup correctly...', 'success')
-    # TODO: refine session['drill'] info
+    # TODO: refine session['drill'] info, load md messages
 
 
 def end_drill():
@@ -76,6 +77,3 @@ def end_drill():
     set_time(time_str)
     session.pop('userlog', None)
     session.pop('drill', None)
-
-# ENHANCE: Sync mini station Time (Kwong)
-# TODO: Sync time function, returns time tuple
