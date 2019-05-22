@@ -1,5 +1,4 @@
-function update() {
+(function showTime() {
   $('.drill-clock').html(moment().format('MMMM DD, YYYY // HH:mm:ss'));
-}
-
-setInterval(update, 1000);
+  setTimeout(showTime, 1000);
+})();

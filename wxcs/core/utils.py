@@ -63,7 +63,7 @@ def init_drill(wxid):
 
     if set_time(selected_case['start_at']):
         session['drill'] = True
-        flash(f'Welcome to the drill...', 'success')
+        flash(f'Welcome to the drill...(Clock will refresh within 30s)', 'success')
     else:
         session['drill'] = False
         flash(f'The time has not setup correctly...', 'success')

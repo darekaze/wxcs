@@ -4,3 +4,8 @@
   <p>The current date and time is -- <span class="drill-clock"></span></p>
   <a href="{{ url_for('core.ender') }}" class="btn btn-danger btn-lg">Terminate</a>
 {% endblock content %}
+
+{% block js %}
+  {{ moment.include_moment(local_js=url_for('static', filename='moment/moment.min.js')) }}
+  <script src="{{ url_for('static', filename='moment/refresh.js') }}"></script>
+{% endblock js %}

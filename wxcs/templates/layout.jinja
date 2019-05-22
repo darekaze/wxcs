@@ -29,13 +29,9 @@
     {% endwith %}
     {% block content %}{% endblock %}
   </main>
-
   <!-- JS -->
   <script src="{{ url_for('static', filename='bootstrap/jquery-3.4.0.slim.min.js') }}" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
-  {{ moment.include_moment(local_js=url_for('static', filename='moment/moment.min.js')) }}
-  <script src="{{ url_for('static', filename='moment/refresh.js') }}"></script>
-
   {% block js %}{% endblock %}
 </body>
 </html>

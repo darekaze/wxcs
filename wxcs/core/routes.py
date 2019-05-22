@@ -44,5 +44,5 @@ def drill():
 @core.route('/ends')
 def ender():
     """Display after the drill has ended."""
-    end_drill()
+    end_drill() if 'drill' in session else None
     return render_template('sim/ender.jinja')
