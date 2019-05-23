@@ -38,7 +38,8 @@ def drill():
 
     if 'drill' not in session:
         init_drill(session['userlog']['wxid'])
-    return render_template('sim/drill.jinja')
+    case = session['drill']
+    return render_template('sim/drill.jinja', case=case)
 
 
 @core.route('/ends')
