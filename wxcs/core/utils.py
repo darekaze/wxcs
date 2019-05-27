@@ -73,7 +73,8 @@ def init_drill(wxid):
 
 def end_drill():
     """Procedure for terminating the drill."""
-    time_str = request_ntp('ntp.nict.jp', version=3)
-    set_time(time_str)
+    if 'drill' in session:
+        time_str = request_ntp('ntp.nict.jp', version=3)
+        set_time(time_str)
     session.pop('userlog', None)
     session.pop('drill', None)
