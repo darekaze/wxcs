@@ -4,6 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_moment import Moment
+from flask_flatpages import FlatPages
 from flask_migrate import Migrate
 
 db = SQLAlchemy()
@@ -12,6 +13,7 @@ login_manager = LoginManager()
 login_manager.login_view = 'admin.login'
 login_manager.login_message_category = 'info'
 moment = Moment()
+pages = FlatPages()
 migrate = Migrate()
 
 
@@ -32,6 +34,7 @@ def register_extensions(app):
     bcrypt.init_app(app)
     login_manager.init_app(app)
     moment.init_app(app)
+    pages.init_app(app)
     migrate.init_app(app, db)
     return None
 

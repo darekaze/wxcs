@@ -9,7 +9,6 @@ $('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
 });
 
 var selectedTab = sessionStorage.getItem('selectedTab');
-console.log(selectedTab);
 if (selectedTab != null) {
   $('a[data-toggle="tab"][href="' + selectedTab + '"]').tab('show');
 } else {

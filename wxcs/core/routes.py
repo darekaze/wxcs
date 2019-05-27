@@ -1,5 +1,6 @@
 """File handling core routes."""
 from flask import Blueprint, redirect, render_template, url_for, session
+from wxcs import pages
 from wxcs.core.forms import StarterForm
 from wxcs.core.utils import load_cases, get_cases_list, set_userlog, init_drill, end_drill
 
@@ -39,7 +40,8 @@ def drill():
     if 'drill' not in session:
         init_drill(session['userlog']['wxid'])
     case = session['drill']
-    return render_template('sim/drill.jinja', case=case)
+    log = pages.get_or_404(f'logs/{case["log"]}')
+    return render_template('sim/drill.jinja', case=case, log=log)
 
 
 @core.route('/ends')

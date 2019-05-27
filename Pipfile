@@ -13,6 +13,7 @@ flask-bcrypt = "~=0.7.1"
 flask-login = "~=0.4.1"
 flask-migrate = "~=2.4.0"
 flask-moment = "~=0.7.0"
+flask-flatPages = "~=0.7.1"
 ntplib = "~=0.3.3"
 
 [dev-packages]

@@ -13,6 +13,10 @@ h6 {
   color: #444444;
 }
 
+.custom-md > h4 {
+  margin-bottom: 16px;
+}
+
 .bg-steel {
   background-color: #5f788a;
 }
