@@ -8,8 +8,8 @@
     Weather Case Simulator
     {% endblock %}
   </title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='utils/bootstrap/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='utils/main.css') }}">
   {% block css %}{% endblock %}
 </head>
 <body>
@@ -30,8 +30,8 @@
     {% block content %}{% endblock %}
   </main>
   <!-- JS -->
-  <script src="{{ url_for('static', filename='bootstrap/jquery-3.4.0.slim.min.js') }}" crossorigin="anonymous"></script>
-  <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='utils/bootstrap/jquery-3.4.0.slim.min.js') }}" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='utils/bootstrap/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
   {% block js %}{% endblock %}
 </body>
 </html>
