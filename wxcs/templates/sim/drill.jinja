@@ -6,11 +6,15 @@
       <p>The current time is -- <span class="drill-clock"></span></p>
       <nav>
         <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link" id="nav-guide-tab" data-toggle="tab" href="#nav-guide" role="tab" aria-controls="nav-guide" aria-selected="false">Guidance</a>
           <a class="nav-item nav-link" id="nav-log-tab" data-toggle="tab" href="#nav-log" role="tab" aria-controls="nav-log" aria-selected="false">Appreciation Log</a>
           <a class="nav-item nav-link" id="nav-links-tab" data-toggle="tab" href="#nav-links" role="tab" aria-controls="nav-links" aria-selected="false">Links & Resources</a>
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade" id="nav-guide" role="tabpanel" aria-labelledby="nav-guide-tab">
+          <div class="custom-md">{{ guide.html|safe }}</div>
+        </div>
         <div class="tab-pane fade" id="nav-log" role="tabpanel" aria-labelledby="nav-log-tab">
           <div class="custom-md">{{ log.html|safe }}</div>
         </div>

@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "type": "RS",
+        "codename": "RS_20160510",
         "title": "Rainstorm on 10 May 2016",
         "start_at": "2016-05-09 22:00:00",
         "end_at": "2016-05-10 00:00:00",
@@ -10,7 +10,7 @@
     },
     {
         "id": 2,
-        "type": "TC",
+        "codename": "TC_20160801_1",
         "title": "TC Nida Pt I",
         "start_at": "2016-08-01 09:30:00",
         "end_at": "2016-08-01 10:45:00",
@@ -19,16 +19,16 @@
     },
     {
         "id": 3,
-        "type": "TC",
+        "codename": "TC_20160801_2",
         "title": "TC Nida Pt II",
         "start_at": "2016-08-01 12:15:00",
-        "end_at": "2016-08-01 12:15:00",
+        "end_at": "2016-08-01 13:30:00",
         "log": "",
         "description": ""
     },
     {
         "id": 4,
-        "type": "TC",
+        "codename": "TC_20170822_1",
         "title": "TC Hato Pt I",
         "start_at": "2017-08-22 19:45:00",
         "end_at": "2017-08-22 22:00:00",
@@ -37,7 +37,7 @@
     },
     {
         "id": 5,
-        "type": "TC",
+        "codename": "TC_20170822_2",
         "title": "TC Hato Pt II",
         "start_at": "2017-08-23 00:00:00",
         "end_at": "2017-08-23 01:15:00",

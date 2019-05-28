@@ -12,5 +12,5 @@ var selectedTab = sessionStorage.getItem('selectedTab');
 if (selectedTab != null) {
   $('a[data-toggle="tab"][href="' + selectedTab + '"]').tab('show');
 } else {
-  $('a[data-toggle="tab"][href="#nav-log"]').tab('show');
+  $('a[data-toggle="tab"][href="#nav-guide"]').tab('show');
 }

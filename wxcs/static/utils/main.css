@@ -13,8 +13,17 @@ h6 {
   color: #444444;
 }
 
-.custom-md > h4 {
+.custom-md h4 {
   margin-bottom: 16px;
+}
+
+.custom-md ol {
+  padding-inline-start: 16px;
+}
+
+.custom-md ol li {
+  padding-inline-start: 12px;
+  padding-bottom: 12px;
 }
 
 .bg-steel {
