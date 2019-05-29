@@ -10,7 +10,7 @@ from wxcs.models import UserLog
 
 def load_cases():
     """Load the weather cases from JSON."""
-    filename = os.path.join(current_app.static_folder, 'cases.json')
+    filename = os.path.join(current_app.static_folder, 'configs/cases.json')
     with open(filename) as cases:
         data = json.load(cases)
     return data

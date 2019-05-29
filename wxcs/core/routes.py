@@ -40,7 +40,7 @@ def drill():
     if 'drill' not in session:
         init_drill(session['userlog']['wxid'])
     case = session['drill']
-    guide = pages.get(f'contents/{case["codename"]}')
+    guide = pages.get(f'messages/{case["codename"]}')
     log = pages.get(f'logs/{case["log"]}')
     return render_template('sim/drill.jinja', case=case, guide=guide, log=log)
 
