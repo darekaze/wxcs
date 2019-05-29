@@ -25,6 +25,7 @@ def create_app(configs='wxcs.config'):
     register_blueprints(app)
     register_errorhandlers(app)
     register_shellcontext(app)
+    register_commands(app)
     return app
 
 
@@ -73,3 +74,10 @@ def register_shellcontext(app):
         return {'db': db, 'Admin': Admin}
 
     app.shell_context_processor(shell_context)
+
+
+def register_commands(app):
+    """Register Click commands."""
+    from wxcs.commands import seed, clean
+    app.cli.add_command(seed)
+    app.cli.add_command(clean)

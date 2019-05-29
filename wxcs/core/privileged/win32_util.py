@@ -33,7 +33,7 @@ def _win_is_admin():
 
 def _win_gen_systime(time_str):
     """Generate and return win32 systime."""
-    dt = datetime.strptime(time_str, '%Y-%m-%d %H:%M:%S')
+    dt = datetime.fromisoformat(time_str)
     dt_tuple = dt.timetuple()
 
     st = SYSTEMTIME()

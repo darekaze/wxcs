@@ -24,7 +24,43 @@ class UserLog(db.Model):
 
     def __repr__(self):
         """Display userlog detail."""
-        return f'UserLog("{self.dtg}", "{self.name}", "{self.post}", "{self.wxid}", "{self.role}")'
+        return f'UserLog("{self.created_at}", "{self.name}", "{self.post}", "{self.wxid}", "{self.role}")'
+
+
+class Case(db.Model):
+    """The case model."""
+
+    __tablename__ = 'cases'
+
+    id = db.Column(db.Integer, primary_key=True)
+    codename = db.Column(db.String(20), nullable=False)
+    title = db.Column(db.String(60), nullable=True)
+    start_at = db.Column(db.DateTime, nullable=False)
+    end_at = db.Column(db.DateTime, nullable=False)
+    log = db.Column(db.String(20), nullable=True)
+    description = db.Column(db.Text, nullable=True)
+
+    def __repr__(self):
+        """Display userlog detail."""
+        return f'Case("{self.codename}", "{self.title}", "{self.start_at}", "{self.end_at}", "{self.log}")'
+
+
+class Link(db.Model):
+    """The Link model."""
+
+    __tablename__ = 'links'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(40), nullable=False)
+    href = db.Column(db.String(80), nullable=False)
+    icon = db.Column(db.String(80), nullable=True)
+    interval_min = db.Column(db.Integer, nullable=True)
+    base_min = db.Column(db.Integer, nullable=True)
+    post = db.Column(db.String(20), nullable=True)
+
+    def __repr__(self):
+        """Display userlog detail."""
+        return f'Case("{self.name}", "{self.href}", "{self.post}")'
 
 
 class Admin(db.Model, UserMixin):
