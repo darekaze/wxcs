@@ -1,29 +1,23 @@
 """Core component utility functions."""
 import sys
-import os
-from flask import current_app, json, session, flash
+from flask import session, flash
 from datetime import datetime
 from ntplib import NTPClient
 from wxcs import db
-from wxcs.models import UserLog
+from wxcs.models import Case, UserLog
+from wxcs.schemas import CaseSchema
+
+case_schema = CaseSchema()
 
 
-def load_cases():
-    """Load the weather cases from JSON."""
-    filename = os.path.join(current_app.static_folder, 'configs/cases.json')
-    with open(filename) as cases:
-        data = json.load(cases)
-    return data
-
-
-def get_cases_list(cases):
+def get_cases_list():
     """Output the filtered list of cases."""
-    return [(i['id'], i['title']) for i in cases]
+    return Case.query.with_entities(Case.id, Case.title).all()
 
 
-def get_case_details(cases, id):
+def get_case_details(id):
     """Return the case detail with specifies id."""
-    return next(item for item in cases if item['id'] == id)
+    return Case.query.get(id)
 
 
 def set_userlog(userlog):
@@ -58,17 +52,15 @@ def request_ntp(server='ntp.nict.jp', version=3):
 
 def init_drill(wxid):
     """Initialize drill: change time and set drill session."""
-    cases = load_cases()
-    selected_case = get_case_details(cases, wxid)
-    time_setted = set_time(selected_case['start_at'])
-    session['drill'] = selected_case
+    case = get_case_details(wxid)
+    time_setted = set_time(case.start_at)
+    session['drill'] = case_schema.dump(case).data
 
     # ENHANCE: Sync mini station Time (Kwong)
-    # TODO: refine session['drill'] info, load md messages
     if time_setted:
-        flash(f'Welcome to the drill... (Clock will refresh within 30s)', 'success')
+        flash(f'Drill has been initialized! (Clock will refresh within 30s)', 'success')
     else:
-        flash('The time has not setup correctly...', 'warning')
+        flash('The time has not setup correctly. You may need to sync the time manually...', 'warning')
 
 
 def end_drill():
