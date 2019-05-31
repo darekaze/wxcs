@@ -4,7 +4,7 @@ import click
 from flask import current_app, json
 from flask.cli import with_appcontext
 from wxcs import db
-from wxcs.models import Case, Link, Usage, Admin
+from wxcs.models import Case, Link, Toolset, Admin
 from datetime import datetime
 from sqlalchemy.exc import IntegrityError
 
@@ -39,19 +39,19 @@ def clean():
 
 @click.command('sync')
 @with_appcontext
-def sync_usage():
-    """Update usage (case-link relationship) table in db."""
-    usage_data = load_json('configs/usage.json')
-    for case in usage_data:
+def sync_toolset():
+    """Update toolsets (case-link relationship) table in db."""
+    toolset_data = load_json('configs/toolsets.json')
+    for case in toolset_data:
         for link_id in case['links']:
-            new_entry = Usage(
+            new_entry = Toolset(
                 codename=case['codename'],
                 link_id=link_id
             )
             db.session.merge(new_entry)
 
     db.session.commit()
-    print('Successfully sync/update usage table in db.')
+    print('Successfully sync/update toolsets table in db.')
 
 
 @click.command('mksu')

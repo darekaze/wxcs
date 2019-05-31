@@ -41,7 +41,7 @@ class Case(db.Model):
     log = db.Column(db.String(20), nullable=True)
     description = db.Column(db.Text, nullable=True)
 
-    links = relationship('Link', secondary='usage')
+    links = relationship('Link', secondary='toolsets')
     logs = relationship('UserLog', backref='user', lazy=True)
 
     def __repr__(self):
@@ -63,27 +63,27 @@ class Link(db.Model):
     base_min = db.Column(db.Integer, nullable=True)
     post = db.Column(db.String(20), nullable=True)
 
-    cases = relationship('Case', secondary='usage')
+    cases = relationship('Case', secondary='toolsets')
 
     def __repr__(self):
         """Display userlog detail."""
         return f'Case("{self.name}", "{self.href}", "{self.post}")'
 
 
-class Usage(db.Model):
+class Toolset(db.Model):
     """Model for showing tools used in cases."""
 
-    __tablename__ = 'usage'
+    __tablename__ = 'toolsets'
 
     codename = db.Column(db.String(20), db.ForeignKey('cases.codename'), primary_key=True)
     link_id = db.Column(db.Integer, db.ForeignKey('links.id'), primary_key=True)
 
-    case = relationship(Case, backref=backref('usage', cascade='all, delete-orphan'))
-    link = relationship(Link, backref=backref('usage', cascade='all, delete-orphan'))
+    case = relationship(Case, backref=backref('toolsets', cascade='all, delete-orphan'))
+    link = relationship(Link, backref=backref('toolsets', cascade='all, delete-orphan'))
 
     def __repr__(self):
         """Display userlog detail."""
-        return f'Usage("{self.wxid}", "{self.linkid}")'
+        return f'Toolset("{self.wxid}", "{self.linkid}")'
 
 
 class Admin(db.Model, UserMixin):

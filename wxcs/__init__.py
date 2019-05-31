@@ -78,8 +78,8 @@ def register_shellcontext(app):
 
 def register_commands(app):
     """Register Click commands."""
-    from wxcs.commands import seed, clean, sync_usage, create_su
+    from wxcs.commands import seed, clean, sync_toolset, create_su
     app.cli.add_command(seed)
     app.cli.add_command(clean)
-    app.cli.add_command(sync_usage)
+    app.cli.add_command(sync_toolset)
     app.cli.add_command(create_su)
