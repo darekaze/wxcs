@@ -4,8 +4,9 @@ import click
 from flask import current_app, json
 from flask.cli import with_appcontext
 from wxcs import db
-from wxcs.models import Case, Link, Usage
+from wxcs.models import Case, Link, Usage, Admin
 from datetime import datetime
+from sqlalchemy.exc import IntegrityError
 
 
 @click.command()
@@ -51,6 +52,21 @@ def sync_usage():
 
     db.session.commit()
     print('Successfully sync/update usage table in db.')
+
+
+@click.command('mksu')
+@click.option('--name', default='su')
+@click.option('--pwd', default='secret')
+@with_appcontext
+def create_su(name, pwd):
+    """Create su function."""
+    try:
+        db.session.add(Admin(username=name, password=pwd))
+        db.session.commit()
+        print('Account created!')
+    except IntegrityError:
+        db.session.rollback()
+        print('Account creation failed...')
 
 
 def load_json(paths):
