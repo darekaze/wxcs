@@ -20,7 +20,7 @@ class UserLog(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     name = db.Column(db.String(20), nullable=False)
     post = db.Column(db.String(20), nullable=False)
-    wxid = db.Column(db.Integer, nullable=False)
+    wxid = db.Column(db.Integer, db.ForeignKey('cases.id'), nullable=False)
     role = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
@@ -42,6 +42,7 @@ class Case(db.Model):
     description = db.Column(db.Text, nullable=True)
 
     links = relationship('Link', secondary='usage')
+    logs = relationship('UserLog', backref='user', lazy=True)
 
     def __repr__(self):
         """Display userlog detail."""
