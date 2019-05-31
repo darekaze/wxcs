@@ -4,7 +4,7 @@ import click
 from flask import current_app, json
 from flask.cli import with_appcontext
 from wxcs import db
-from wxcs.models import Case, Link
+from wxcs.models import Case, Link, Usage
 from datetime import datetime
 
 
@@ -34,6 +34,23 @@ def clean():
                 full_pathname = os.path.join(dirpath, filename)
                 click.echo('Removing {}'.format(full_pathname))
                 os.remove(full_pathname)
+
+
+@click.command('sync')
+@with_appcontext
+def sync_usage():
+    """Update usage (case-link relationship) table in db."""
+    usage_data = load_json('configs/usage.json')
+    for case in usage_data:
+        for link_id in case['links']:
+            new_entry = Usage(
+                codename=case['codename'],
+                link_id=link_id
+            )
+            db.session.merge(new_entry)
+
+    db.session.commit()
+    print('Successfully sync/update usage table in db.')
 
 
 def load_json(paths):

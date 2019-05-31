@@ -1,4 +1,5 @@
 """Model handling file."""
+from sqlalchemy.orm import relationship, backref
 from datetime import datetime
 from flask_login import UserMixin
 from wxcs import bcrypt, db, login_manager
@@ -33,12 +34,14 @@ class Case(db.Model):
     __tablename__ = 'cases'
 
     id = db.Column(db.Integer, primary_key=True)
-    codename = db.Column(db.String(20), nullable=False)
+    codename = db.Column(db.String(20), unique=True, nullable=False)
     title = db.Column(db.String(60), nullable=True)
     start_at = db.Column(db.DateTime, nullable=False)
     end_at = db.Column(db.DateTime, nullable=False)
     log = db.Column(db.String(20), nullable=True)
     description = db.Column(db.Text, nullable=True)
+
+    links = relationship('Link', secondary='usage')
 
     def __repr__(self):
         """Display userlog detail."""
@@ -46,7 +49,7 @@ class Case(db.Model):
 
 
 class Link(db.Model):
-    """The Link model."""
+    """The Link model. (ctg - Category No.)."""
 
     __tablename__ = 'links'
 
@@ -54,13 +57,32 @@ class Link(db.Model):
     name = db.Column(db.String(40), nullable=False)
     href = db.Column(db.String(80), nullable=False)
     icon = db.Column(db.String(80), nullable=True)
+    ctg = db.Column(db.Integer, nullable=True)
     interval_min = db.Column(db.Integer, nullable=True)
     base_min = db.Column(db.Integer, nullable=True)
     post = db.Column(db.String(20), nullable=True)
 
+    cases = relationship('Case', secondary='usage')
+
     def __repr__(self):
         """Display userlog detail."""
         return f'Case("{self.name}", "{self.href}", "{self.post}")'
+
+
+class Usage(db.Model):
+    """Model for showing tools used in cases."""
+
+    __tablename__ = 'usage'
+
+    codename = db.Column(db.String(20), db.ForeignKey('cases.codename'), primary_key=True)
+    link_id = db.Column(db.Integer, db.ForeignKey('links.id'), primary_key=True)
+
+    case = relationship(Case, backref=backref('usage', cascade='all, delete-orphan'))
+    link = relationship(Link, backref=backref('usage', cascade='all, delete-orphan'))
+
+    def __repr__(self):
+        """Display userlog detail."""
+        return f'Usage("{self.wxid}", "{self.linkid}")'
 
 
 class Admin(db.Model, UserMixin):
