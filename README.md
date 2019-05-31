@@ -15,12 +15,11 @@ pipenv run flask run
 
 You will see a pretty welcome screen.
 
-Once you have installed your DBMS, run the following to create your app's database tables and perform the initial migration :
+Once you have installed your DBMS, run the following to create your app's database tables and perform the initial seeding:
 
 ```bash
-flask db init
-flask db migrate
 flask db upgrade
+flask seed
 pipenv run flask run
 ```
 
