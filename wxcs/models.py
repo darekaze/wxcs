@@ -67,7 +67,7 @@ class Link(db.Model):
 
     def __repr__(self):
         """Display userlog detail."""
-        return f'Case("{self.name}", "{self.href}", "{self.post}")'
+        return f'Link("{self.name}", "{self.href}", "{self.post}")'
 
 
 class Toolset(db.Model):
@@ -113,4 +113,4 @@ class Admin(db.Model, UserMixin):
 
     def __repr__(self):
         """Return admin detail."""
-        return f"Admin('{self.username}')"
+        return f'Admin("{self.username}")'

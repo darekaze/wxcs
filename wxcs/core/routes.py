@@ -2,7 +2,7 @@
 from flask import Blueprint, redirect, render_template, url_for, session
 from wxcs import pages
 from wxcs.core.forms import StarterForm
-from wxcs.core.utils import get_cases_list, set_userlog, init_drill, end_drill
+from wxcs.core.utils import get_cases_list, get_toolset, set_userlog, init_drill, end_drill
 
 core = Blueprint('core', __name__)
 
@@ -40,7 +40,8 @@ def drill():
     case = session['drill']
     guide = pages.get(f'messages/{case["codename"]}')
     log = pages.get(f'logs/{case["log"]}')
-    return render_template('sim/drill.jinja', case=case, guide=guide, log=log)
+    links = get_toolset(case['id'])
+    return render_template('sim/drill.jinja', case=case, guide=guide, log=log, links=links)
 
 
 @core.route('/ends')

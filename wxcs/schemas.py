@@ -12,3 +12,16 @@ class CaseSchema(Schema):
     end_at = fields.DateTime()
     log = fields.Str(dump_only=True)
     description = fields.Str()
+
+
+class LinkSchema(Schema):
+    """The Link schema."""
+
+    id = fields.Int(dump_only=True)
+    name = fields.Str()
+    href = fields.Str(dump_only=True)
+    icon = fields.Str()
+    ctg = fields.Int()
+    interval_min = fields.Int()
+    base_min = fields.Int()
+    post = fields.Str()

@@ -19,7 +19,20 @@
         <div class="tab-pane fade" id="nav-log" role="tabpanel" aria-labelledby="nav-log-tab">
           <div class="custom-md">{{ log.html|safe }}</div>
         </div>
-        <div class="tab-pane fade" id="nav-links" role="tabpanel" aria-labelledby="nav-links-tab">{% include "sim/components/links.jinja" %}</div>
+        <div class="tab-pane fade" id="nav-links" role="tabpanel" aria-labelledby="nav-links-tab">
+          <div class="card-columns">
+          {# TODO: Refine this part #}
+            {% for link in links %}
+              <a href="{{ link.href }}" class="card text-center">
+                <img src="{{ link.icon }}" class="card-img-top" alt=""/>
+                <div class="card-body">
+                  <h6 class="card-title">{{ link.name }}</h6>
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+
+        </div>
       </div>
     </div>
     <div class="col-lg-5 pb-5">

@@ -5,9 +5,10 @@ from datetime import datetime
 from ntplib import NTPClient
 from wxcs import db
 from wxcs.models import Case, UserLog
-from wxcs.schemas import CaseSchema
+from wxcs.schemas import CaseSchema, LinkSchema
 
 case_schema = CaseSchema()
+link_schema = LinkSchema()
 
 
 def get_cases_list():
@@ -18,6 +19,17 @@ def get_cases_list():
 def get_case_details(id):
     """Return the case detail with specifies id."""
     return Case.query.get(id)
+
+
+def get_toolset(id):
+    """Return toolsets list."""
+    # ENHANCE: further separate by ctg (category)
+    case = get_case_details(id)
+    links = []
+    for link in case.links:
+        li = link_schema.dump(link).data
+        links.append(li)
+    return links
 
 
 def set_userlog(userlog):
