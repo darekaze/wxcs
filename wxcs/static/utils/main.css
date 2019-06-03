@@ -17,6 +17,12 @@ h6 {
   margin-bottom: 16px;
 }
 
+.custom-md p,
+.custom-md li {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .custom-md ol {
   padding-inline-start: 16px;
 }
