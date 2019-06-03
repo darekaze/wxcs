@@ -3,10 +3,10 @@ import os
 import click
 from flask import current_app, json
 from flask.cli import with_appcontext
-from wxcs import db
-from wxcs.models import Case, Link, Toolset, Admin
 from datetime import datetime
 from sqlalchemy.exc import IntegrityError
+from wxcs import db
+from wxcs.models import Case, Link, Toolset, Admin
 
 
 @click.command()

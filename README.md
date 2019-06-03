@@ -23,6 +23,15 @@ flask seed
 pipenv run flask run
 ```
 
+## Creating the view
+
+```sql
+CREATE VIEW v_toolsets AS 
+SELECT t.*, l.name, l.href 
+FROM toolsets AS t 
+JOIN links AS l ON t.link_id = l.id
+```
+
 ## Going Production Mode
 
 In your production environment, make sure the `FLASK_DEBUG` environment variable is unset or is set to `0`. In your `.env` file:
