@@ -106,3 +106,21 @@ a.article-title:hover {
   -moz-user-select: none;
   -ms-user-select: none;
 }
+
+.row.equal-height {
+  display: flex;
+  flex-wrap: wrap;
+}
+.row.equal-height > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  flex: 1;
+}
+
+.card-img-top {
+  height: 7rem;
+  object-fit: fill;
+}

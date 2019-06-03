@@ -70,7 +70,7 @@ def init_drill(wxid):
 
     # ENHANCE: Sync mini station Time (Kwong)
     if time_setted:
-        flash(f'Drill has been initialized! (Clock will refresh within 30s)', 'success')
+        flash('Drill has been initialized! (Clock will refresh within 30s)', 'success')
     else:
         flash('The time has not setup correctly. You may need to sync the time manually...', 'warning')
 

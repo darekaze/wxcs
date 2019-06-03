@@ -20,15 +20,18 @@
           <div class="custom-md">{{ log.html|safe }}</div>
         </div>
         <div class="tab-pane fade" id="nav-links" role="tabpanel" aria-labelledby="nav-links-tab">
-          <div class="card-columns">
+          <div class="row equal-height">
           {# TODO: Refine this part #}
             {% for link in links %}
-              <a href="{{ link.href }}" class="card text-center">
-                <img src="{{ link.icon }}" class="card-img-top" alt=""/>
-                <div class="card-body">
-                  <h6 class="card-title">{{ link.name }}</h6>
-                </div>
-              </a>
+              <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 px-1">
+                <a class="card text-center" href="{{ link.href }}" target="_blank" rel="noopener noreferrer">
+                  <img class="card-img-top" src="{{ url_for('static', filename='assets/'+link.icon) }}" alt=""
+                    onerror="this.src='{{ url_for('static', filename='assets/index.jpg') }}';" />
+                  <div class="card-body p-2">
+                    <h6 class="card-title mb-0">{{ link.name }}</h6>
+                  </div>
+                </a>
+              </div>
             {% endfor %}
           </div>
 
