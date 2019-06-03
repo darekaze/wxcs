@@ -4,7 +4,7 @@
         "name": "MDDS",
         "href": "http://imma1/met-gis/mdds.html",
         "icon": "mdds.png",
-        "ctg": 0,
+        "ctg": 1,
         "interval_min": null,
         "base_min": null,
         "post": null
@@ -14,7 +14,7 @@
         "name": "MetGIS",
         "href": "http://voodoo/~training/metgis-web/",
         "icon": "metgis.png",
-        "ctg": 0,
+        "ctg": 1,
         "interval_min": null,
         "base_min": null,
         "post": "SEO(F)41"
@@ -134,7 +134,7 @@
         "name": "Meso-NHM QPF Ensemble",
         "href": "http://hpc2pvm1/~avia/ensrf/stamp_map/main_meso-nhm.html",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "EO(F)31"
@@ -144,7 +144,7 @@
         "name": "Himawari-8 Satellite Image",
         "href": "http://radsats-vs01/rad_sate_pages/sat.htm",
         "icon": "",
-        "ctg": 0,
+        "ctg": 1,
         "interval_min": null,
         "base_min": null,
         "post": "A4"
@@ -154,7 +154,7 @@
         "name": "TC Reference Stations",
         "href": "/tcwinds",
         "icon": "",
-        "ctg": 0,
+        "ctg": 1,
         "interval_min": null,
         "base_min": null,
         "post": "CSA(R)41 / SSA(R)21"
@@ -164,7 +164,7 @@
         "name": "EPS Meteogram",
         "href": "/eps_charts",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "F4 / SSA(R)21"
@@ -174,7 +174,7 @@
         "name": "EC EPS Wind",
         "href": "http://bmetis1:1183/eepstc_Training/",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "EO(F)31"
@@ -184,7 +184,7 @@
         "name": "Mesoscale EPS",
         "href": "http://10.53.139.166/~avm/eps/",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "EO(F)31"
@@ -194,7 +194,7 @@
         "name": "NWP TC Intensity Guidance",
         "href": "http://terra01:10181/index.html",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "EO(F)31"
@@ -204,7 +204,7 @@
         "name": "OCF - TC AWS",
         "href": "http://bmetis1:1183/OcfWx_Training/tcaws.jsp",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "EO(F)31"
@@ -214,7 +214,7 @@
         "name": "Signal Probability - Harbour",
         "href": "http://bla19.hko.gov.hk/~nwp/sig/",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "EO(F)31"
@@ -224,7 +224,7 @@
         "name": "Signal Probability - 8 ref stations",
         "href": "http://bla19/~nwp/sig_8stations/index_8stations.html",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "EO(F)31"
@@ -234,7 +234,7 @@
         "name": "Summary of Model TC Intensity Forecasts",
         "href": "http://hpc2pvm1/~nwp-app/multi_models/tcVerification/data/intensity/2017/H1716_J1713_Hato/fctInt.H1716.2017082218Z.htm",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "EO(F)31"
@@ -244,7 +244,7 @@
         "name": "TC EPS Tracks",
         "href": "http://terra01:10186/MEn_main.html",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "EO(F)31"
@@ -254,7 +254,7 @@
         "name": "TC QPF",
         "href": "http://hpc2pvm1/~nwp-app/multi_models/tcRF/htm/fctQPF_allMdl.main.htm",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "EO(F)31"
@@ -264,7 +264,7 @@
         "name": "TINT-RI",
         "href": "http://terra01:10183/",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "EO(F)31"
@@ -274,7 +274,7 @@
         "name": "TC Assessment Information Page",
         "href": "http://gissky/~tips/cgi-bin/assessment3.shtml?selTCIDName=1716_HATO&act=TCID&selTCModel=NWP-HKE&nowModelID=CENTRE-HKOO",
         "icon": "",
-        "ctg": 0,
+        "ctg": 3,
         "interval_min": null,
         "base_min": null,
         "post": "APII(F)41"
@@ -284,7 +284,7 @@
         "name": "D'vorak Analysis Input Page",
         "href": "http://gissky/~tips/cgi-bin/dvorak.html",
         "icon": "",
-        "ctg": 0,
+        "ctg": 3,
         "interval_min": null,
         "base_min": null,
         "post": "APII(F)41"
@@ -294,7 +294,7 @@
         "name": "Other TC Products",
         "href": "http://192.168.143.59/wxsim/Case-assessment/Hato2019Image/thumb.html",
         "icon": "",
-        "ctg": 0,
+        "ctg": 4,
         "interval_min": null,
         "base_min": null,
         "post": "SSA(R)21"
@@ -304,7 +304,7 @@
         "name": "ECMWF EPS",
         "href": "http://hpc2pvm1/~nwp-app/epsviewer/preview/index.html",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": null
@@ -314,7 +314,7 @@
         "name": "Operational Storm Surge Prediction System",
         "href": "http://d2-model/slosh/v3/",
         "icon": "",
-        "ctg": 0,
+        "ctg": 3,
         "interval_min": null,
         "base_min": null,
         "post": "CEO(D)22"
@@ -324,7 +324,7 @@
         "name": "AAMC",
         "href": "http://aamc-arch-01b/~aamc/portal/",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": null
@@ -334,7 +334,7 @@
         "name": "Meso NHM - TC Structure",
         "href": "http://terra01:10187/",
         "icon": "",
-        "ctg": 0,
+        "ctg": 2,
         "interval_min": null,
         "base_min": null,
         "post": "EO(F)31"
