@@ -10,38 +10,20 @@
     },
     {
         "id": 2,
-        "codename": "TC_20160801_1",
-        "title": "TC Nida Pt I",
-        "start_at": "2016-08-01 09:30:00",
-        "end_at": "2016-08-01 10:45:00",
-        "log": "",
+        "codename": "TC_20170822",
+        "title": "TC Hato Pt I",
+        "start_at": "2017-08-22 20:00:00",
+        "end_at": "2017-08-22 23:00:00",
+        "log": "201708170822_A",
         "description": ""
     },
     {
         "id": 3,
-        "codename": "TC_20160801_2",
-        "title": "TC Nida Pt II",
-        "start_at": "2016-08-01 12:15:00",
-        "end_at": "2016-08-01 13:30:00",
-        "log": "",
-        "description": ""
-    },
-    {
-        "id": 4,
-        "codename": "TC_20170822_1",
-        "title": "TC Hato Pt I",
-        "start_at": "2017-08-22 19:45:00",
-        "end_at": "2017-08-22 22:00:00",
-        "log": "",
-        "description": ""
-    },
-    {
-        "id": 5,
-        "codename": "TC_20170822_2",
-        "title": "TC Hato Pt II",
-        "start_at": "2017-08-23 00:00:00",
-        "end_at": "2017-08-23 01:15:00",
-        "log": "",
+        "codename": "TC_20180915",
+        "title": "TC Mangkhut",
+        "start_at": "2018-09-15 15:15:00",
+        "end_at": "2018-09-15 17:15:00",
+        "log": "201809180915_A",
         "description": ""
     }
 ]
