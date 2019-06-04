@@ -40,8 +40,8 @@
                 {# ENHANCE: Further style #}
                 <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 px-1">
                   <a class="card text-center" href="{{ link.href }}" target="_blank" rel="noopener noreferrer">
-                    <img class="card-img-top" src="{{ url_for('static', filename='assets/'+link.icon) }}" alt=""
-                      onerror="this.src='{{ url_for('static', filename='assets/index.jpg') }}';" />
+                    <img class="card-img-top" src="{{ url_for('static', filename='assets/icons/'+link.icon) }}" alt=""
+                      onerror="this.src='{{ url_for('static', filename='assets/icons/index.jpg') }}';" />
                     <div class="card-body p-2">
                       <h6 class="card-title mb-0">{{ link.name }}</h6>
                     </div>
