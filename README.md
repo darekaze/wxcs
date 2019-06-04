@@ -71,6 +71,14 @@ To apply the migration.
 
 For a full migration command reference, run `flask db --help`.
 
+## Static Folder
+
+- Assets: Images & Icons for frontend
+- Configs: Seeds for Database setup
+- Logs: All Appreciation logs goes to here
+- Messages: All Instruction & Guidance goes to here
+- Utils: Supportive functionalities for the website **(BEWARE TO MODIFY)**
+
 ## Asset Management
 
 Files placed inside the `assets` directory and its subdirectories (excluding `js` and `css`) will be copied by webpack's `file-loader` into the `static/build` directory, with hashes of their contents appended to their names. For instance, if you have the file `assets/img/favicon.ico`, this will get copied into something like `static/build/img/favicon.fec40b1d14528bf9179da3b6b78079ad.ico`. You can then put this line into your header:
