@@ -58,7 +58,8 @@
 {% endblock content %}
 
 {% block js %}
+  <script src="{{ url_for('static', filename='utils/helpers/tab.js') }}"></script>
+  <script src="{{ url_for('static', filename='utils/helpers/tasks.js') }}"></script>
   {{ moment.include_moment(local_js=url_for('static', filename='utils/plugins/moment.min.js')) }}
   <script src="{{ url_for('static', filename='utils/helpers/refresh.js') }}"></script>
-  <script src="{{ url_for('static', filename='utils/helpers/tab.js') }}"></script>
 {% endblock js %}
