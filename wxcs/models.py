@@ -50,15 +50,7 @@ class Case(db.Model):
 
 
 class Link(db.Model):
-    """The Link model.
-
-    ctg - Category No.
-        0 = Uncategorized
-        1 = Observations
-        2 = Prognoses
-        3 = Operations
-        4 = Others
-    """
+    """The Link model."""
 
     __tablename__ = 'links'
 

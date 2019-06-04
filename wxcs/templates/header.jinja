@@ -11,8 +11,10 @@
           <a class="nav-item nav-link" href="{{ url_for('admin.dashboard') }}">Dashboard</a>
         </div>
         <div class="navbar-nav">
-        {# TODO: Add Drill in Progress signal (mixed with time as a label) #}
-          <div class="nav-item text-white drill-clock"></div>
+          {% if 'drill' in session %}
+            <a href="{{ url_for('core.drill') }}" class="badge badge-pill badge-danger badge-drill">Drilling in progress</a>
+            <div class="nav-item text-white drill-clock"></div>
+          {% endif %}
           {% if current_user.is_authenticated %}
             <a class="nav-item nav-link" href="{{ url_for('admin.logout') }}">Logout</a>
           {% endif %}

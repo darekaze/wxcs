@@ -1,5 +1,6 @@
 """Schema file."""
 from marshmallow import Schema, fields
+from enum import Enum
 
 
 class CaseSchema(Schema):
@@ -25,3 +26,13 @@ class LinkSchema(Schema):
     interval_min = fields.Int()
     base_min = fields.Int()
     post = fields.Str()
+
+
+class LinkEnum(Enum):
+    """Enum of Link."""
+
+    Uncategorized = 0
+    Observations = 1
+    Prognoses = 2
+    Operations = 3
+    Others = 4

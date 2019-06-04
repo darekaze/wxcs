@@ -1,11 +1,12 @@
 """Core component utility functions."""
 import sys
 from flask import session, flash
+from collections import defaultdict
 from datetime import datetime
 from ntplib import NTPClient
 from wxcs import db
 from wxcs.models import Case, UserLog
-from wxcs.schemas import CaseSchema, LinkSchema
+from wxcs.schemas import CaseSchema, LinkSchema, LinkEnum
 
 case_schema = CaseSchema()
 link_schema = LinkSchema()
@@ -23,13 +24,13 @@ def get_case_details(id):
 
 def get_toolset(id):
     """Return toolsets list."""
-    # ENHANCE: further separate by ctg (category)
     case = get_case_details(id)
-    links = []
+    links = defaultdict(list)
     for link in case.links:
         li = link_schema.dump(link).data
-        links.append(li)
-    return links
+        category = LinkEnum(li['ctg']).name
+        links[category].append(li)
+    return dict(links)
 
 
 def set_userlog(userlog):

@@ -1,7 +1,7 @@
 body {
   background: #fafafa;
   color: #333333;
-  margin-top: 5rem;
+  margin: 5rem auto;
 }
 
 h1,
@@ -14,7 +14,7 @@ h6 {
 }
 
 .custom-md h4 {
-  margin-bottom: 16px;
+  margin-bottom: .54rem !important;
 }
 
 .custom-md p,
@@ -30,6 +30,10 @@ h6 {
 .custom-md ol li {
   padding-inline-start: 12px;
   padding-bottom: 12px;
+}
+
+.custom-header {
+  margin-bottom: .66rem !important;
 }
 
 .bg-steel {
@@ -113,10 +117,18 @@ a.article-title:hover {
   -ms-user-select: none;
 }
 
+.badge-drill {
+  padding-top: .35rem !important;
+  padding-bottom: .35rem !important;
+  margin-left: .5rem !important;
+  margin-right: .5rem !important;
+}
+
 .row.equal-height {
   display: flex;
   flex-wrap: wrap;
 }
+
 .row.equal-height > [class*='col-'] {
   display: flex;
   flex-direction: column;
@@ -124,9 +136,10 @@ a.article-title:hover {
 
 .card {
   flex: 1;
+  margin-bottom: .4rem !important;
 }
 
 .card-img-top {
-  height: 7rem;
+  height: 8rem;
   object-fit: fill;
 }
