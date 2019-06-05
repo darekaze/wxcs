@@ -1,5 +1,5 @@
 """File handling core routes."""
-from flask import Blueprint, redirect, render_template, url_for, session
+from flask import Blueprint, redirect, render_template, url_for, session, jsonify
 from wxcs import pages
 from wxcs.core.forms import StarterForm
 from wxcs.core.utils import get_cases_list, get_toolset, set_userlog, init_drill, end_drill
@@ -49,3 +49,9 @@ def ender():
     """Display after the drill has ended."""
     end_drill()
     return render_template('sim/ender.jinja')
+
+
+@core.route('/tasks')
+def tasks():
+    """Perform updates of task list shown at frontend."""
+    return jsonify({'status': 'success', 'data': 'tasks'})

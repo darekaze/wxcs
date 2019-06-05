@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_moment import Moment
 from flask_flatpages import FlatPages
+from flask_jsglue import JSGlue
 from flask_migrate import Migrate
 
 db = SQLAlchemy()
@@ -14,6 +15,7 @@ login_manager.login_view = 'admin.login'
 login_manager.login_message_category = 'info'
 moment = Moment()
 pages = FlatPages()
+jsglue = JSGlue()
 migrate = Migrate()
 
 
@@ -36,6 +38,7 @@ def register_extensions(app):
     login_manager.init_app(app)
     moment.init_app(app)
     pages.init_app(app)
+    jsglue.init_app(app)
     migrate.init_app(app, db)
     return None
 

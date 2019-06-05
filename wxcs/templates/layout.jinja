@@ -8,6 +8,7 @@
     Weather Case Simulator
     {% endblock %}
   </title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/favicon.ico') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='utils/plugins/bootstrap.min.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='utils/css/main.css') }}">
   {% block css %}{% endblock %}
@@ -30,6 +31,7 @@
     {% block content %}{% endblock %}
   </main>
   <!-- JS -->
+  {{ JSGlue.include() }}
   <script src="{{ url_for('static', filename='utils/plugins/jquery.slim.min.js') }}" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename='utils/plugins/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
   {% block js %}{% endblock %}
