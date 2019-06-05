@@ -30,7 +30,7 @@
     {% endwith %}
     {% block content %}{% endblock %}
   </main>
-  <!-- JS -->
+  {# ---JS--- #}
   {{ JSGlue.include() }}
   <script src="{{ url_for('static', filename='utils/plugins/jquery.slim.min.js') }}" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename='utils/plugins/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>

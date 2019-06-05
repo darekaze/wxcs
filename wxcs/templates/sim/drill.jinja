@@ -1,6 +1,6 @@
 {% extends "layout.jinja" %}
 {% block content %}
-  <div class="d-flex justify-content-between flex-wrap mb-4 mb-lg-1">
+  <div class="d-flex justify-content-between flex-wrap mb-3 mb-lg-1">
     <div>
       <h2>Case: {{ case.title }}</h2>
       {# TODO: Put drill general info here: codename, start time, end time, duration #}
@@ -12,47 +12,56 @@
       <a href="{{ url_for('core.ender') }}" class="btn btn-danger mx-1">Terminate</a>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-4 pb-5">
-      {% include "sim/components/tips.jinja" %}
+  <nav class="mb-3">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link" id="nav-guide-tab" data-toggle="tab" href="#nav-guide" role="tab" aria-controls="nav-guide" aria-selected="false">Guidance</a>
+      <a class="nav-item nav-link" id="nav-log-tab" data-toggle="tab" href="#nav-log" role="tab" aria-controls="nav-log" aria-selected="false">Appreciation Log</a>
+      <a class="nav-item nav-link" id="nav-links-tab" data-toggle="tab" href="#nav-links" role="tab" aria-controls="nav-links" aria-selected="false">Tasks, Links & Resources</a>
     </div>
-    <div class="col-lg-8 pb-3">
-      <nav>
-        <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link" id="nav-guide-tab" data-toggle="tab" href="#nav-guide" role="tab" aria-controls="nav-guide" aria-selected="false">Guidance</a>
-          <a class="nav-item nav-link" id="nav-log-tab" data-toggle="tab" href="#nav-log" role="tab" aria-controls="nav-log" aria-selected="false">Appreciation Log</a>
-          <a class="nav-item nav-link" id="nav-links-tab" data-toggle="tab" href="#nav-links" role="tab" aria-controls="nav-links" aria-selected="false">Links & Resources</a>
-        </div>
-      </nav>
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade" id="nav-guide" role="tabpanel" aria-labelledby="nav-guide-tab">
-          <div class="custom-md">{{ guide.html|safe }}</div>
-          {# OPT: Put other general misc info here #}
-        </div>
-        <div class="tab-pane fade" id="nav-log" role="tabpanel" aria-labelledby="nav-log-tab">
-          <div class="custom-md">{{ log.html|safe }}</div>
-        </div>
-        <div class="tab-pane fade" id="nav-links" role="tabpanel" aria-labelledby="nav-links-tab">
-          {% for key, values in links.items() %}
-            <h5 class="custom-header">{{ key }}</h5>
-            <div class="row equal-height">
-              {% for link in values %}
-                {# ENHANCE: Further style #}
-                <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 px-1">
-                  <a class="card text-center" href="{{ link.href }}" target="_blank" rel="noopener noreferrer">
-                    <img class="card-img-top" src="{{ url_for('static', filename='assets/icons/'+link.icon) }}" alt=""
-                      onerror="this.src='{{ url_for('static', filename='assets/icons/index.jpg') }}';" />
-                    <div class="card-body p-2">
-                      <h6 class="card-title mb-0">{{ link.name }}</h6>
-                    </div>
-                  </a>
-                </div>
-              {% endfor %}
-            </div>
-            <hr>
-          {% endfor %}
-        </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade col-xl-10 mx-auto" id="nav-guide" role="tabpanel" aria-labelledby="nav-guide-tab">
+      <div class="custom-md">{{ guide.html|safe }}</div>
+      {# OPT: Put other general misc info here #}
+    </div>
+    <div class="tab-pane fade col-xl-10 mx-auto" id="nav-log" role="tabpanel" aria-labelledby="nav-log-tab">
+      <div class="custom-md">{{ log.html|safe }}</div>
+    </div>
+    <div class="tab-pane fade" id="nav-links" role="tabpanel" aria-labelledby="nav-links-tab">
+    <div class="row">
+      <div class="col-lg-6">
+        {% include "sim/components/tips.jinja" %}
       </div>
+      <div class="col-lg-6">
+        {% for key, values in links.items() %}
+          <h5 class="custom-header">{{ key }}</h5>
+          <div class="row equal-height">
+            {% for link in values %}
+              {# ENHANCE: Further style #}
+              <div class="col-6 col-sm-4 col-md-3 col-lg-4 px-1">
+                <a class="card text-center" href="{{ link.href }}" target="_blank" rel="noopener noreferrer">
+                  <img class="card-img-top" src="{{ url_for('static', filename='assets/icons/'+link.icon) }}" alt=""
+                    onerror="this.src='{{ url_for('static', filename='assets/icons/index.jpg') }}';" />
+                  <div class="card-body p-2">
+                    <h6 class="card-title mb-0">{{ link.name }}</h6>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+          <hr>
+        {% endfor %}
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-xl-10 pb-3">
+
+
     </div>
   </div>
 {% endblock content %}
