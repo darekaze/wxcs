@@ -11,7 +11,7 @@
           <a class="nav-item nav-link" href="{{ url_for('admin.dashboard') }}">Dashboard</a>
         </div>
         <div class="navbar-nav">
-          {% if 'drill' in session %}
+          {% if 'userlog' in session %}
             <a href="{{ url_for('core.drill') }}" class="badge badge-pill badge-danger badge-drill">Drilling in progress</a>
             <div class="nav-item text-white drill-clock"></div>
           {% endif %}

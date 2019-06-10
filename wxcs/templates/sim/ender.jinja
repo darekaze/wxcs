@@ -1,6 +1,19 @@
 {% extends "layout.jinja" %}
 {% block content %}
-  <h1>Drill Ends...</h1>
+  <div class="d-flex flex-column justify-content-center align-items-center" style="height:78vh;">
+    <div class="text-center">
+      <h1>Drill Ends</h1>
+      <h5 class="">Before leaving, please fill in the following surveys for {{ case.title }}!</h5>
+    </div>
+    <div>
+    {% if case.survey_asm %}
+      <a href="{{ case.survey_asm }}" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-primary m-2">Self-Audit Form</a>
+    {% endif %}
+    {% if case.survey_ev %}
+      <a href="{{ case.survey_ev }}" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-info m-2">Evaluation Form</a>
+    {% endif %}
+    </div>
+  </div>
 {% endblock content %}
 
 {% block js %}

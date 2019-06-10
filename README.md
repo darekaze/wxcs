@@ -20,6 +20,7 @@ Once you have installed your DBMS, run the following to create your app's databa
 ```bash
 flask db upgrade
 flask seed
+flask sync
 pipenv run flask run
 ```
 

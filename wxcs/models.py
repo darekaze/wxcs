@@ -40,6 +40,8 @@ class Case(db.Model):
     end_at = db.Column(db.DateTime, nullable=False)
     log = db.Column(db.String(20), nullable=True)
     description = db.Column(db.Text, nullable=True)
+    survey_asm = db.Column(db.String(60), nullable=True)
+    survey_ev = db.Column(db.String(60), nullable=True)
 
     links = relationship('Link', secondary='toolsets')
     logs = relationship('UserLog', backref='user', lazy=True)

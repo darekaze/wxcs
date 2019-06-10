@@ -24,6 +24,7 @@ def starter():
     if form.validate_on_submit():
         userlog = {field.name: field.data for field in form}
         set_userlog(userlog)
+        init_drill(userlog['wxid'])
         return redirect(url_for('core.drill'))
 
     return render_template('sim/starter.jinja', form=form)
@@ -35,8 +36,6 @@ def drill():
     if 'userlog' not in session:
         return redirect(url_for('core.starter'))
 
-    if 'drill' not in session:
-        init_drill(session['userlog']['wxid'])
     case = session['drill']
     guide = pages.get(f'assets/messages/{case["codename"]}')
     log = pages.get(f'assets/logs/{case["log"]}')
@@ -48,7 +47,7 @@ def drill():
 def ender():
     """Display after the drill has ended."""
     end_drill()
-    return render_template('sim/ender.jinja')
+    return render_template('sim/ender.jinja', case=session['drill'])
 
 
 @core.route('/tasks')

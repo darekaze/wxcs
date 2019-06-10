@@ -13,6 +13,8 @@ class CaseSchema(Schema):
     end_at = fields.DateTime()
     log = fields.Str(dump_only=True)
     description = fields.Str()
+    survey_asm = fields.Str()
+    survey_ev = fields.Str()
 
 
 class LinkSchema(Schema):
