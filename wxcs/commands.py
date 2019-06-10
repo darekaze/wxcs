@@ -13,6 +13,7 @@ from wxcs.models import Case, Link, Toolset, Admin
 @with_appcontext
 def seed():
     """Seed or update cases and links table in db."""
+    # ENHANCE: Refine to merge db
     cases = get_cases()
     links = get_links()
 
