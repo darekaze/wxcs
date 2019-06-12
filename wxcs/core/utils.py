@@ -1,5 +1,4 @@
 """Core component utility functions."""
-import sys
 from flask import session, flash
 from collections import defaultdict
 from datetime import datetime
@@ -7,6 +6,7 @@ from ntplib import NTPClient
 from wxcs import db
 from wxcs.models import Case, UserLog
 from wxcs.schemas import CaseSchema, LinkSchema, LinkEnum
+from wxcs.core.privileged.time_utils import set_time
 
 case_schema = CaseSchema()
 link_schema = LinkSchema()
@@ -44,16 +44,6 @@ def set_userlog(userlog):
     db.session.commit()
     session['userlog'] = userlog
     return None
-
-
-def set_time(time_str):
-    """Set system time."""
-    if sys.platform == 'win32':
-        from .privileged.win32_util import _win_set_time
-        ret = _win_set_time(time_str)
-    elif sys.platform.startswith('linux'):
-        ret = True
-    return ret
 
 
 def request_ntp(server='ntp.nict.jp', version=3):
