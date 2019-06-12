@@ -4,16 +4,13 @@ Severe weather case simulator
 
 ## Quickstart
 
-Run the following commands to bootstrap your environment :
+Run the following commands after cloning the project:
 
 ```bash
-git clone https://github.com/darekaze/wxcs
 cd wxcs
 pipenv install -d
 pipenv run flask run
 ```
-
-You will see a pretty welcome screen.
 
 Once you have installed your DBMS, run the following to create your app's database tables and perform the initial seeding:
 
