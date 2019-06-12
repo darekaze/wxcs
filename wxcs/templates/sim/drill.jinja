@@ -8,7 +8,7 @@
     </div>
     <div>
       {# TODO: make route for activating syncing function #}
-      <a href="#" class="btn btn-secondary mx-1">Sync Server Time</a>
+      <a href="#" class="btn btn-secondary mx-1 disabled">Sync Server Time</a>
       <a href="{{ url_for('core.ender') }}" class="btn btn-danger mx-1">Terminate</a>
     </div>
   </div>
@@ -34,22 +34,22 @@
         </div>
         <div class="col-lg-6">
           {% for key, values in links.items() %}
-            <h5 class="custom-header">{{ key }}</h5>
-            <div class="row equal-height">
-              {% for link in values %}
-                {# ENHANCE: Further style #}
-                <div class="col-6 col-sm-4 col-md-3 col-lg-4 px-1">
-                  <a class="card text-center" href="{{ link.href }}" target="_blank" rel="noopener noreferrer">
-                    <img class="card-img-top" src="{{ url_for('static', filename='assets/icons/'+link.icon) }}" alt=""
-                      onerror="this.src='{{ url_for('static', filename='assets/icons/index.jpg') }}';" />
-                    <div class="card-body p-2">
-                      <h6 class="card-title mb-0">{{ link.name }}</h6>
-                    </div>
-                  </a>
+          <h5 class="custom-header">{{ key }}</h5>
+          <div class="row equal-height">
+            {% for link in values %}
+            {# ENHANCE: Further style #}
+            <div class="col-6 col-sm-4 col-md-3 col-lg-4 px-1">
+              <a class="card text-center" href="{{ link.href }}" target="_blank" rel="noopener noreferrer">
+                <img class="card-img-top" src="{{ url_for('static', filename='assets/icons/'+link.icon) }}" alt=""
+                  onerror="this.src='{{ url_for('static', filename='assets/icons/index.jpg') }}';" />
+                <div class="card-body p-2">
+                  <h6 class="card-title mb-0">{{ link.name }}</h6>
                 </div>
-              {% endfor %}
+              </a>
             </div>
-            <hr>
+            {% endfor %}
+          </div>
+          <hr>
           {% endfor %}
         </div>
       </div>
@@ -60,6 +60,4 @@
 {% block js %}
   <script src="{{ url_for('static', filename='utils/helpers/tab.js') }}"></script>
   <script src="{{ url_for('static', filename='utils/helpers/tasks.js') }}"></script>
-  {{ moment.include_moment(local_js=url_for('static', filename='utils/plugins/moment.min.js')) }}
-  <script src="{{ url_for('static', filename='utils/helpers/refresh.js') }}"></script>
 {% endblock js %}

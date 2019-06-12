@@ -34,6 +34,8 @@
   {{ JSGlue.include() }}
   <script src="{{ url_for('static', filename='utils/plugins/jquery.slim.min.js') }}" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename='utils/plugins/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
+  {{ moment.include_moment(local_js=url_for('static', filename='utils/plugins/moment.min.js')) }}
+  <script src="{{ url_for('static', filename='utils/helpers/refresh.js') }}"></script>
   {% block js %}{% endblock %}
 </body>
 </html>
