@@ -8,17 +8,17 @@ Run the following commands after cloning the project:
 
 ```bash
 cd wxcs
-pipenv install -d
-pipenv run flask run
+python3 -m pipenv install -d
+python3 -m pipenv shell
 ```
 
-Once you have installed your DBMS, run the following to create your app's database tables and perform the initial seeding:
+Then, run the following to create your app's database tables and perform the initial seeding:
 
 ```bash
 flask db upgrade
 flask seed
 flask sync
-pipenv run flask run
+flask run
 ```
 
 ## Creating the view
