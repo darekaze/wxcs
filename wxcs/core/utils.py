@@ -56,14 +56,16 @@ def request_ntp(server='ntp.nict.jp', version=3):
 def init_drill(wxid):
     """Initialize drill: change time and set drill session."""
     case = get_case_details(wxid)
-    time_setted = set_time(case.start_at)
-    session['drill'] = case_schema.dump(case).data
+    time_str = (case.start_at).strftime('%Y-%m-%d %H:%M:%S')
+    time_setted = set_time(time_str)
 
-    # ENHANCE: Sync mini station Time (Kwong)
     if time_setted:
         flash('Drill has been initialized! (Clock will refresh within 30s)', 'success')
     else:
         flash('The time has not setup correctly. You may need to sync the time manually...', 'warning')
+
+    session['drill'] = case_schema.dump(case).data
+    return time_setted
 
 
 def end_drill():

@@ -63,6 +63,8 @@ def _linux_set_time(time_str):
 
     Ref: http://linux.die.net/man/3/clock_settime
     """
+    import subprocess
+    from os import geteuid
     from time import mktime
     from ctypes import Structure, c_long, byref, CDLL
     from ctypes.util import find_library
@@ -76,14 +78,28 @@ def _linux_set_time(time_str):
 
     librt = CDLL(find_library('rt'))
 
-    try:
-        ts = Timespec()
+    def is_su():
+        """Linux - Check su."""
+        return geteuid() == 0
+
+    def gen_timespec(time_str):
+        """Generate and return linux timespec."""
         dt_tuple = datetime.fromisoformat(time_str).timetuple()
+        ts = Timespec()
         ts.tv_sec = int(mktime(dt_tuple))
         ts.tv_nsec = 0
+        return ts
 
-        librt.clock_settime(CLOCK_REALTIME, byref(ts))
-        return True
+    try:
+        if is_su():
+            timespec = gen_timespec(time_str)
+            librt.clock_settime(CLOCK_REALTIME, byref(timespec))
+            return True
+        else:
+            print('Require root! Please enter password--|')
+            lp_params = f'"{__file__}" "{time_str}"'
+            subprocess.call(['sudo', 'python3', *lp_params])
+            return True  # should return subprocess status
     except Exception:
         return False
 
